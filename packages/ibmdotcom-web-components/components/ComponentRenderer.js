@@ -29,10 +29,11 @@ const TableOfContents = dynamic(import("./TableOfContents"), { ssr: false });
 const CardSectionCarousel = dynamic(import("./CardSectionCarousel"), {
   ssr: false,
 });
-const CardSection = dynamic(import("./CardSection"), { ssr: false });
-const PieChart = dynamic(import("./PieChart"), {
+const HorizontalRule = dynamic(import("./HorizontalRule"), { ssr: false });
+const Image = dynamic(import("./Image"), {
   ssr: false,
 });
+const CardSection = dynamic(import("./CardSection"), { ssr: false });
 const ThemeZone = dynamic(import("./ThemeZone"), { ssr: false });
 
 // import exploreMore from "../data/exploreMore.json";
@@ -49,9 +50,10 @@ const map = {
   "dds-card-section-with-images": CardSection,
   "dds-card-section-carousel": CardSectionCarousel,
   "dds-background-media": BackgroundMedia,
+  "dds-horizontal-rule": HorizontalRule,
+  "dds-image": Image,
   "dds-leadspace": Leadspace,
   "dds-table-of-contents": TableOfContents,
-  pieChart: PieChart,
   themeZone: ThemeZone,
 };
 
