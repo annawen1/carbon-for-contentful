@@ -10,7 +10,7 @@
 import DDSImage from "@carbon/ibmdotcom-web-components/es/components-react/image/image";
 import DDSImageItem from "@carbon/ibmdotcom-web-components/es/components-react/image/image-item";
 
-export default function HorizontalRule(content) {
+export default function Image(content) {
   const { alt, defaultSrc, border, heading, copy, lightbox, imageItems } =
     content?.fields || {};
 

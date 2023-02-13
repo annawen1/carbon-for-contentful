@@ -25,6 +25,7 @@ const ContentGroupPictograms = dynamic(import("./ContentGroupPictograms"), {
 const ContentItem = dynamic(import("./ContentItem"), { ssr: false });
 const Card = dynamic(import("./Card"), { ssr: false });
 const Leadspace = dynamic(import("./Leadspace"), { ssr: false });
+const LinkWithIcon = dynamic(import("./LinkWithIcon"), { ssr: false });
 const TableOfContents = dynamic(import("./TableOfContents"), { ssr: false });
 const CardSectionCarousel = dynamic(import("./CardSectionCarousel"), {
   ssr: false,
@@ -33,13 +34,19 @@ const HorizontalRule = dynamic(import("./HorizontalRule"), { ssr: false });
 const Image = dynamic(import("./Image"), {
   ssr: false,
 });
-const CardSection = dynamic(import("./CardSection"), { ssr: false });
+const LeadspaceWithSearch = dynamic(import("./LeadspaceWithSearch"), {
+  ssr: false,
+});
 const Quote = dynamic(import("./Quote"), {
   ssr: false,
 });
 const SearchWithTypeahead = dynamic(import("./SearchWithTypeahead"), {
   ssr: false,
 });
+const VideoPlayer = dynamic(import("./VideoPlayer"), {
+  ssr: false,
+});
+const CardSection = dynamic(import("./CardSection"), { ssr: false });
 const ThemeZone = dynamic(import("./ThemeZone"), { ssr: false });
 
 // import exploreMore from "../data/exploreMore.json";
@@ -59,9 +66,12 @@ const map = {
   "dds-horizontal-rule": HorizontalRule,
   "dds-image": Image,
   "dds-leadspace": Leadspace,
+  "dds-link-with-icon": LinkWithIcon,
+  "dds-leadspace-with-search": LeadspaceWithSearch,
   "dds-quote": Quote,
   "dds-search-with-typeahead": SearchWithTypeahead,
   "dds-table-of-contents": TableOfContents,
+  "dds-video-player-container": VideoPlayer,
   themeZone: ThemeZone,
 };
 

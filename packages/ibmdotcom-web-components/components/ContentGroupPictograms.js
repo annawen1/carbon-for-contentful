@@ -7,6 +7,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import dynamic from "next/dynamic";
 import DDSContentGroupPictograms from "@carbon/ibmdotcom-web-components/es/components-react/content-group-pictograms/content-group-pictograms";
 import DDSContentGroupHeading from "@carbon/ibmdotcom-web-components/es/components-react/content-group/content-group-heading";
 import DDSContentGroupCopy from "@carbon/ibmdotcom-web-components/es/components-react/content-group/content-group-copy";
@@ -14,8 +15,9 @@ import DDSContentGroupCopy from "@carbon/ibmdotcom-web-components/es/components-
 import DDSPictogramItem from "@carbon/ibmdotcom-web-components/es/components-react/pictogram-item/pictogram-item";
 import DDSContentItemHeading from "@carbon/ibmdotcom-web-components/es/components-react/content-item/content-item-heading.js";
 import DDSContentItemCopy from "@carbon/ibmdotcom-web-components/es/components-react/content-item/content-item-copy.js";
-import DDSLinkWithIcon from "@carbon/ibmdotcom-web-components/es/components-react/link-with-icon/link-with-icon";
-import ArrowRight20 from "@carbon/icons-react/es/arrow--right/20.js";
+
+// TODO: check if this should be DDSTextCTA
+const LinkWithIcon = dynamic(import("./LinkWithIcon"), { ssr: false });
 
 const pictoMap = {
   Desktop: `M15,29H9V10h25v19h-7
@@ -37,7 +39,7 @@ export default function ContentGroupPictograms(content) {
       <DDSContentGroupHeading>{heading}</DDSContentGroupHeading>
       {copy && <DDSContentGroupCopy>{copy}</DDSContentGroupCopy>}
       {pictogramItems?.map((child, index) => {
-        const { heading, copy, pictogram, ctaText, ctaHref } = child.fields;
+        const { heading, copy, pictogram, linkWithIcon } = child.fields;
         return (
           <DDSPictogramItem key={index}>
             <svg
@@ -67,9 +69,7 @@ export default function ContentGroupPictograms(content) {
             </svg>
             <DDSContentItemHeading>{heading}</DDSContentItemHeading>
             <DDSContentItemCopy>{copy}</DDSContentItemCopy>
-            <DDSLinkWithIcon href={ctaHref} slot="footer">
-              {ctaText} <ArrowRight20 slot="icon"></ArrowRight20>
-            </DDSLinkWithIcon>
+            {linkWithIcon && <LinkWithIcon slot="footer" {...linkWithIcon} />}
           </DDSPictogramItem>
         );
       })}

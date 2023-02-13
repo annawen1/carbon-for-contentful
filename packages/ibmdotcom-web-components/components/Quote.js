@@ -13,7 +13,7 @@ import DDSQuoteSourceHeading from "@carbon/ibmdotcom-web-components/es/component
 import DDSQuoteSourceCopy from "@carbon/ibmdotcom-web-components/es/components-react/quote/quote-source-copy";
 import DDSQuoteSourceBottomCopy from "@carbon/ibmdotcom-web-components/es/components-react/quote/quote-source-bottom-copy";
 
-export default function BackgroundMedia(content) {
+export default function Quote(content) {
   const {
     copy,
     quoteMark,

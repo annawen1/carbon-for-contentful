@@ -13,12 +13,13 @@ import DDSContentGroupHeading from "@carbon/ibmdotcom-web-components/es/componen
 import DDSContentGroupCopy from "@carbon/ibmdotcom-web-components/es/components-react/content-group/content-group-copy";
 import DDSImage from "@carbon/ibmdotcom-web-components/es/components-react/image/image";
 import DDSImageItem from "@carbon/ibmdotcom-web-components/es/components-react/image/image-item";
-import DDSVideoPlayerContainer from "@carbon/ibmdotcom-web-components/es/components-react/video-player/video-player-container";
 
 const ComponentRenderer = dynamic(import("./ComponentRenderer"), {
   ssr: false,
 });
 const CardLinkCTA = dynamic(import("./CardLinkCTA"), { ssr: false });
+const VideoPlayer = dynamic(import("./VideoPlayer"), { ssr: false });
+
 
 export default function ContentGroupSimple(content) {
   const {
@@ -29,13 +30,14 @@ export default function ContentGroupSimple(content) {
     caption,
     defaultSrc,
     imageItems,
-    videoId,
+    videoPlayer
   } = content?.fields || {};
   return (
     <DDSContentGroupSimple>
       <DDSContentGroupHeading>{heading}</DDSContentGroupHeading>
       <DDSContentGroupCopy>{copy}</DDSContentGroupCopy>
-      {!videoId && (
+      {videoPlayer?.length ?
+        VideoPlayer(...videoPlayer) : 
         <DDSImage
           slot="media"
           defaultSrc={"https:" + defaultSrc}
@@ -54,14 +56,8 @@ export default function ContentGroupSimple(content) {
             );
           })}
         </DDSImage>
-      )}
+      }
 
-      {videoId && (
-        <DDSVideoPlayerContainer
-          video-id={videoId}
-          background-mode={true}
-        ></DDSVideoPlayerContainer>
-      )}
       {children?.map((child, index) => {
         return <ComponentRenderer content={child} key={index} />;
       })}
