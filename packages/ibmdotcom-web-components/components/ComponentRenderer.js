@@ -34,6 +34,9 @@ const Image = dynamic(import("./Image"), {
   ssr: false,
 });
 const CardSection = dynamic(import("./CardSection"), { ssr: false });
+const Quote = dynamic(import("./Quote"), {
+  ssr: false,
+});
 const ThemeZone = dynamic(import("./ThemeZone"), { ssr: false });
 
 // import exploreMore from "../data/exploreMore.json";
@@ -53,6 +56,7 @@ const map = {
   "dds-horizontal-rule": HorizontalRule,
   "dds-image": Image,
   "dds-leadspace": Leadspace,
+  "dds-quote": Quote,
   "dds-table-of-contents": TableOfContents,
   themeZone: ThemeZone,
 };
