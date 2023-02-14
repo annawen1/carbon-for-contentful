@@ -43,6 +43,9 @@ const Quote = dynamic(import("./Quote"), {
 const SearchWithTypeahead = dynamic(import("./SearchWithTypeahead"), {
   ssr: false,
 });
+const TabsExtended = dynamic(import("./TabsExtended"), {
+  ssr: false,
+});
 const VideoPlayer = dynamic(import("./VideoPlayer"), {
   ssr: false,
 });
@@ -71,6 +74,7 @@ const map = {
   "dds-quote": Quote,
   "dds-search-with-typeahead": SearchWithTypeahead,
   "dds-table-of-contents": TableOfContents,
+  "dds-tabs-extended": TabsExtended,
   "dds-video-player-container": VideoPlayer,
   themeZone: ThemeZone,
 };
