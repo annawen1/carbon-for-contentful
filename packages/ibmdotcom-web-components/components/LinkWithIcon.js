@@ -34,22 +34,18 @@ const iconMap = {
   Calendar20: <Calendar20 slot="icon" />,
   Email20: <Email20 slot="icon" />,
   Chat20: <Chat20 slot="icon" />,
-}
+};
 
 export default function LinkWithIcon(content) {
-  const {
-    iconPlacement,
-    disabled,
-    href,
-    text,
-    icon,
-  } = content?.fields || {};
+  const { iconPlacement, disabled, href, text, icon, slot } =
+    content?.fields || {};
   return (
     <DDSLinkWithIcon
       iconPlacement={iconPlacement}
       disabled={disabled}
       href={href}
-      >
+      slot={slot}
+    >
       {text} {iconMap[icon]}
     </DDSLinkWithIcon>
   );

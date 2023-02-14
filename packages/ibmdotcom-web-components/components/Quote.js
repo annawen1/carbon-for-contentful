@@ -7,11 +7,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import dynamic from "next/dynamic";
 import DDSQuote from "@carbon/ibmdotcom-web-components/es/components-react/quote/quote";
-import DDSLinkWithIcon from "@carbon/ibmdotcom-web-components/es/components-react/link-with-icon/link-with-icon";
 import DDSQuoteSourceHeading from "@carbon/ibmdotcom-web-components/es/components-react/quote/quote-source-heading";
 import DDSQuoteSourceCopy from "@carbon/ibmdotcom-web-components/es/components-react/quote/quote-source-copy";
 import DDSQuoteSourceBottomCopy from "@carbon/ibmdotcom-web-components/es/components-react/quote/quote-source-bottom-copy";
+
+const LinkWithIcon = dynamic(import("./LinkWithIcon"), {
+  ssr: false,
+});
 
 export default function Quote(content) {
   const {
@@ -21,16 +25,22 @@ export default function Quote(content) {
     sourceCopy,
     sourceBottomCopy,
     colorScheme,
+    linkWithIcon,
   } = content?.fields || {};
+
+  const linkWithIconFields = {
+    fields: { ...linkWithIcon?.fields, slot: "footer" },
+  };
+
+  console.log("linkWithIcon", linkWithIcon);
+
   return (
     <DDSQuote color-scheme={colorScheme} mark-type={quoteMark}>
       {copy}
       <DDSQuoteSourceHeading>{sourceHeading}</DDSQuoteSourceHeading>
       <DDSQuoteSourceCopy>{sourceCopy}</DDSQuoteSourceCopy>
       <DDSQuoteSourceBottomCopy>{sourceBottomCopy}</DDSQuoteSourceBottomCopy>
-      <DDSLinkWithIcon slot="footer" href="https://example.com">
-        Link with icon
-      </DDSLinkWithIcon>
+      <LinkWithIcon {...linkWithIconFields} />
     </DDSQuote>
   );
 }
