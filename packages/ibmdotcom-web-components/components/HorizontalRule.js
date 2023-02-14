@@ -10,13 +10,14 @@
 import DDSHorizontalRule from "@carbon/ibmdotcom-web-components/es/components-react/horizontal-rule/horizontal-rule";
 
 export default function HorizontalRule(content) {
-  const { type, size, contrast, weight } = content?.fields || {};
+  const { type, size, contrast, weight, slot } = content?.fields || {};
   return (
     <DDSHorizontalRule
       type={type}
       size={size}
       contrast={contrast}
       weight={weight}
+      slot={slot}
     ></DDSHorizontalRule>
   );
 }

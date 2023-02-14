@@ -29,10 +29,25 @@ export default function LeadspaceWithSearch(content) {
     contentCopy,
   } = content?.fields || {};
 
+  const backgroundMediaFields = {
+    fields: { ...backgroundMedia?.fields, slot: "image" },
+  };
+
+  const searchWithTypeaheadFields = {
+    fields: { slot: "search", alternate: true },
+  };
+
+  const horizontalRuleFields = {
+    fields: { slot: "hr" },
+  };
+
   return (
-    <DDSLeadspaceWithSearch adjacent-theme={adjacentTheme}>
+    <DDSLeadspaceWithSearch
+      adjacent-theme={adjacentTheme}
+      has-image={backgroundMedia || undefined}
+    >
       {!backgroundMedia ? undefined : (
-        <BackgroundMedia slot="image" {...backgroundMedia} />
+        <BackgroundMedia {...backgroundMediaFields} />
       )}
       <DDSLeadspaceWithSearchHeading>{heading}</DDSLeadspaceWithSearchHeading>
       <DDSLeadspaceWithSearchContent>
@@ -43,8 +58,8 @@ export default function LeadspaceWithSearch(content) {
           {contentCopy}
         </DDSLeadspaceWithSearchContentCopy>
       </DDSLeadspaceWithSearchContent>
-      <SearchWithTypeahead slot="search" leadspace-search></SearchWithTypeahead>
-      <HorizontalRule slot="hr"></HorizontalRule>
+      <SearchWithTypeahead {...searchWithTypeaheadFields}></SearchWithTypeahead>
+      <HorizontalRule {...horizontalRuleFields} />
     </DDSLeadspaceWithSearch>
   );
 }
